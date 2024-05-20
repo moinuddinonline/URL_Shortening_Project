@@ -1,0 +1,4 @@
+RewriteEngine On
+RewriteBase /URL_Shortening/
+RewriteRule ^([a-zA-Z0-9]+)$ redirect.php?alias=$1 [QSA,L]
+

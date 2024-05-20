@@ -1,0 +1,27 @@
+CREATE DATABASE url_shortener;
+
+USE url_shortener; // database name
+
+
+// Create table user
+
+CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(255) UNIQUE NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    created at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+
+// Create table urls
+
+CREATE TABLE urls (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    long_url TEXT NOT NULL,
+    short_alias VARCHAR(10) UNIQUE NOT NULL,
+    user_id INT,
+    clicks INT DEFAULT 0,
+    referral_sources JSON DEFAULT '{}',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(id)
+);
